@@ -88,47 +88,6 @@ export const personalPicks = [
     genre: 'Fantasy',
     audibleUrl: 'https://www.audible.com/search?keywords=Hero+of+Ages+Brandon+Sanderson',
   },
-  {
-    id: 'mb-4',
-    title: 'The Alloy of Law',
-    author: 'Brandon Sanderson',
-    description:
-      'Era 2, Book 1. Three hundred years later, Scadrial has railroads and electric lights. Twinborn lawman Wax is pulled out of retirement into a dangerous city conspiracy.',
-    coverUrl: 'https://covers.openlibrary.org/b/isbn/9780765330420-L.jpg',
-    genre: 'Fantasy',
-    audibleUrl: 'https://www.audible.com/search?keywords=Alloy+of+Law+Brandon+Sanderson',
-  },
-  {
-    id: 'mb-5',
-    title: 'Shadows of Self',
-    author: 'Brandon Sanderson',
-    description:
-      'Era 2, Book 2. Wax and Wayne investigate murders shaking the fragile political order and uncover a conspiracy that strikes at the history of their world.',
-    coverUrl: 'https://covers.openlibrary.org/b/isbn/9780765378552-L.jpg',
-    genre: 'Fantasy',
-    audibleUrl: 'https://www.audible.com/search?keywords=Shadows+of+Self+Brandon+Sanderson',
-  },
-  {
-    id: 'mb-6',
-    title: 'The Bands of Mourning',
-    author: 'Brandon Sanderson',
-    description:
-      "Era 2, Book 3. Wax and Wayne travel south in search of the Lord Ruler's legendary metalminds — and discover civilisations that shouldn't exist.",
-    coverUrl: 'https://covers.openlibrary.org/b/isbn/9780765378569-L.jpg',
-    genre: 'Fantasy',
-    audibleUrl: 'https://www.audible.com/search?keywords=Bands+of+Mourning+Brandon+Sanderson',
-  },
-  {
-    id: 'mb-7',
-    title: 'The Lost Metal',
-    author: 'Brandon Sanderson',
-    description:
-      "Era 2, Book 4. The ultimate showdown for Wax and Wayne. The Set's plans reach culmination and the fate of Scadrial — and the entire Cosmere — hangs in the balance.",
-    coverUrl: 'https://covers.openlibrary.org/b/isbn/9781250858924-L.jpg',
-    genre: 'Fantasy',
-    audibleUrl: 'https://www.audible.com/search?keywords=The+Lost+Metal+Brandon+Sanderson',
-  },
-
   // ── Malazan Book of the Fallen ─────────────────────────────────────────────
   {
     id: 'mz-1',
