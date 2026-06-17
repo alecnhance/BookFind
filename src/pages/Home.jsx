@@ -5,7 +5,7 @@ const modes = [
   {
     to: '/picks',
     icon: '★',
-    title: 'My Picks',
+    title: "Alec's Favorites",
     desc: 'Hand-selected recommendations just for you',
   },
   {
@@ -126,7 +126,7 @@ export default function Home() {
             to="/picks"
             className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-gray-900 font-bold px-8 py-3.5 rounded-2xl transition-colors duration-200 text-sm tracking-wide"
           >
-            See my picks →
+            See Alec's favorites →
           </Link>
         </motion.div>
       </motion.section>
