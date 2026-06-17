@@ -1,8 +1,7 @@
 export const personalPicksNote =
   "These are books I think you'll love — each one I'd recommend without hesitation."
 
-// coverUrl uses Open Library covers via ISBN. Update any broken ones at:
-// https://covers.openlibrary.org/b/isbn/{ISBN}-L.jpg
+// coverUrl uses Open Library cover IDs (looked up by title+author, more reliable than ISBN)
 
 export const personalPicks = [
   // ── Stormlight Archive ─────────────────────────────────────────────────────
@@ -12,7 +11,7 @@ export const personalPicks = [
     author: 'Brandon Sanderson',
     description:
       'Book 1 of the Stormlight Archive. On the storm-ravaged world of Roshar, a enslaved soldier, a young scholar, and a troubled warlord are drawn toward a destiny tied to ancient Knights Radiant.',
-    coverUrl: 'https://covers.openlibrary.org/b/isbn/9780765326355-L.jpg',
+    coverUrl: 'https://covers.openlibrary.org/b/id/14658316-L.jpg',
     genre: 'Fantasy',
     audibleUrl: 'https://www.audible.com/search?keywords=The+Way+of+Kings+Brandon+Sanderson',
   },
@@ -22,7 +21,7 @@ export const personalPicks = [
     author: 'Brandon Sanderson',
     description:
       "Book 2. As the Everstorm approaches the Shattered Plains, Kaladin and Shallan's paths collide and the ancient Knights Radiant begin to resurface.",
-    coverUrl: 'https://covers.openlibrary.org/b/isbn/9780765326362-L.jpg',
+    coverUrl: 'https://covers.openlibrary.org/b/id/14658334-L.jpg',
     genre: 'Fantasy',
     audibleUrl: 'https://www.audible.com/search?keywords=Words+of+Radiance+Brandon+Sanderson',
   },
@@ -32,7 +31,7 @@ export const personalPicks = [
     author: 'Brandon Sanderson',
     description:
       'Book 3. Dalinar Kholin must unite the nations of Roshar against the Voidbringers — while confronting a dark past that could destroy everything he has built.',
-    coverUrl: 'https://covers.openlibrary.org/b/isbn/9780765326379-L.jpg',
+    coverUrl: 'https://covers.openlibrary.org/b/id/14658111-L.jpg',
     genre: 'Fantasy',
     audibleUrl: 'https://www.audible.com/search?keywords=Oathbringer+Brandon+Sanderson',
   },
@@ -42,7 +41,7 @@ export const personalPicks = [
     author: 'Brandon Sanderson',
     description:
       'Book 4. Navani and Raboniel uncover fabrial secrets that could turn the tide of war, while Kaladin fights a battle not of swords but of the mind.',
-    coverUrl: 'https://covers.openlibrary.org/b/isbn/9780765326386-L.jpg',
+    coverUrl: 'https://covers.openlibrary.org/b/id/14658361-L.jpg',
     genre: 'Fantasy',
     audibleUrl: 'https://www.audible.com/search?keywords=Rhythm+of+War+Brandon+Sanderson',
   },
@@ -52,7 +51,7 @@ export const personalPicks = [
     author: 'Brandon Sanderson',
     description:
       'Book 5 — the conclusion of the first arc. Szeth confronts his past and Kaladin races across Roshar as everything the characters have fought for converges.',
-    coverUrl: 'https://covers.openlibrary.org/b/isbn/9780765326393-L.jpg',
+    coverUrl: 'https://covers.openlibrary.org/b/id/14838986-L.jpg',
     genre: 'Fantasy',
     audibleUrl: 'https://www.audible.com/search?keywords=Wind+and+Truth+Brandon+Sanderson',
   },
@@ -64,7 +63,7 @@ export const personalPicks = [
     author: 'Brandon Sanderson',
     description:
       'Book 1. For a thousand years ash has fallen and the Lord Ruler has reigned immortal. A young street thief named Vin joins a crew of rebels who dare to overthrow a god.',
-    coverUrl: 'https://covers.openlibrary.org/b/isbn/9780765316882-L.jpg',
+    coverUrl: 'https://covers.openlibrary.org/b/id/14658160-L.jpg',
     genre: 'Fantasy',
     audibleUrl: 'https://www.audible.com/search?keywords=Mistborn+Final+Empire+Brandon+Sanderson',
   },
@@ -74,7 +73,7 @@ export const personalPicks = [
     author: 'Brandon Sanderson',
     description:
       'Book 2. The Lord Ruler is dead but the empire fractures. Vin and Elend must hold Luthadel against three besieging armies, each hiding its own secret agenda.',
-    coverUrl: 'https://covers.openlibrary.org/b/isbn/9780765316899-L.jpg',
+    coverUrl: 'https://covers.openlibrary.org/b/id/14658341-L.jpg',
     genre: 'Fantasy',
     audibleUrl: 'https://www.audible.com/search?keywords=Well+of+Ascension+Brandon+Sanderson',
   },
@@ -84,7 +83,7 @@ export const personalPicks = [
     author: 'Brandon Sanderson',
     description:
       'Book 3. The mists are killing people, ash falls without end, and the world is dying. Vin and Elend race to uncover the truth behind the Hero of Ages prophecy.',
-    coverUrl: 'https://covers.openlibrary.org/b/isbn/9780765316905-L.jpg',
+    coverUrl: 'https://covers.openlibrary.org/b/id/14658094-L.jpg',
     genre: 'Fantasy',
     audibleUrl: 'https://www.audible.com/search?keywords=Hero+of+Ages+Brandon+Sanderson',
   },
@@ -95,7 +94,7 @@ export const personalPicks = [
     author: 'Steven Erikson',
     description:
       "Book 1. The Malazan Empire's relentless conquest of Genabackis begins. Gods, assassins and soldiers collide in a sprawling epic that rewards readers with its staggering depth.",
-    coverUrl: 'https://covers.openlibrary.org/b/isbn/9780765348784-L.jpg',
+    coverUrl: 'https://covers.openlibrary.org/b/id/374277-L.jpg',
     genre: 'Fantasy',
     audibleUrl: 'https://www.audible.com/search?keywords=Gardens+of+the+Moon+Steven+Erikson',
   },
@@ -105,7 +104,7 @@ export const personalPicks = [
     author: 'Steven Erikson',
     description:
       "Book 2. A chain of dogs. A death march across a continent. Erikson's most emotionally harrowing novel — a story of honour, tragedy and extraordinary sacrifice.",
-    coverUrl: 'https://covers.openlibrary.org/b/isbn/9780765348807-L.jpg',
+    coverUrl: 'https://covers.openlibrary.org/b/id/525197-L.jpg',
     genre: 'Fantasy',
     audibleUrl: 'https://www.audible.com/search?keywords=Deadhouse+Gates+Steven+Erikson',
   },
@@ -115,7 +114,7 @@ export const personalPicks = [
     author: 'Steven Erikson',
     description:
       'Book 3. Old enemies become reluctant allies as the Malazan armies face the Pannion Domin — a theocracy spreading like a cancer — in a brutal siege-warfare epic.',
-    coverUrl: 'https://covers.openlibrary.org/b/isbn/9780765348821-L.jpg',
+    coverUrl: 'https://covers.openlibrary.org/b/id/524439-L.jpg',
     genre: 'Fantasy',
     audibleUrl: 'https://www.audible.com/search?keywords=Memories+of+Ice+Steven+Erikson',
   },
@@ -125,7 +124,7 @@ export const personalPicks = [
     author: 'Steven Erikson',
     description:
       'Book 4. Karsa Orlong — one of fantasy\'s most extraordinary protagonists — carves his way into the heart of the Malazan world and rewrites what a fantasy hero can be.',
-    coverUrl: 'https://covers.openlibrary.org/b/isbn/9780765348845-L.jpg',
+    coverUrl: 'https://covers.openlibrary.org/b/id/374327-L.jpg',
     genre: 'Fantasy',
     audibleUrl: 'https://www.audible.com/search?keywords=House+of+Chains+Steven+Erikson',
   },
@@ -135,7 +134,7 @@ export const personalPicks = [
     author: 'Steven Erikson',
     description:
       'Book 5. A new continent, a new war. Two civilisations on a collision course and five brothers at the centre of it all — introducing the Tiste Edur and the empire of Lether.',
-    coverUrl: 'https://covers.openlibrary.org/b/isbn/9780765310019-L.jpg',
+    coverUrl: 'https://covers.openlibrary.org/b/id/524762-L.jpg',
     genre: 'Fantasy',
     audibleUrl: 'https://www.audible.com/search?keywords=Midnight+Tides+Steven+Erikson',
   },
@@ -145,7 +144,7 @@ export const personalPicks = [
     author: 'Steven Erikson',
     description:
       'Book 6. The Fourteenth Army pursues the last of the Apocalypse\'s followers across a continent, racing toward a decision that will define the Malazan world.',
-    coverUrl: 'https://covers.openlibrary.org/b/isbn/9780765310026-L.jpg',
+    coverUrl: 'https://covers.openlibrary.org/b/id/8401212-L.jpg',
     genre: 'Fantasy',
     audibleUrl: 'https://www.audible.com/search?keywords=The+Bonehunters+Steven+Erikson',
   },
@@ -155,7 +154,7 @@ export const personalPicks = [
     author: 'Steven Erikson',
     description:
       'Book 7. The Bonehunters arrive in Lether to bring down the Edur Empire. The most action-driven volume in the series, with storylines converging in a devastating crescendo.',
-    coverUrl: 'https://covers.openlibrary.org/b/isbn/9780765316554-L.jpg',
+    coverUrl: 'https://covers.openlibrary.org/b/id/386149-L.jpg',
     genre: 'Fantasy',
     audibleUrl: "https://www.audible.com/search?keywords=Reaper's+Gale+Steven+Erikson",
   },
@@ -165,7 +164,7 @@ export const personalPicks = [
     author: 'Steven Erikson',
     description:
       'Book 8. Back to Darujhistan and the ghosts of the Bridgeburners. Events spiral toward tragedy in what many consider the most emotionally powerful volume of the series.',
-    coverUrl: 'https://covers.openlibrary.org/b/isbn/9780765316561-L.jpg',
+    coverUrl: 'https://covers.openlibrary.org/b/id/6684006-L.jpg',
     genre: 'Fantasy',
     audibleUrl: 'https://www.audible.com/search?keywords=Toll+the+Hounds+Steven+Erikson',
   },
@@ -175,7 +174,7 @@ export const personalPicks = [
     author: 'Steven Erikson',
     description:
       'Book 9 — Part 1 of the conclusion. The Bonehunters march toward a fate they can sense but not name. A pervasive sense of doom as the apocalypse draws close.',
-    coverUrl: 'https://covers.openlibrary.org/b/isbn/9780765316585-L.jpg',
+    coverUrl: 'https://covers.openlibrary.org/b/id/6304352-L.jpg',
     genre: 'Fantasy',
     audibleUrl: 'https://www.audible.com/search?keywords=Dust+of+Dreams+Steven+Erikson',
   },
@@ -185,7 +184,7 @@ export const personalPicks = [
     author: 'Steven Erikson',
     description:
       'Book 10 — the finale. Gods fall, armies shatter, and a decade-long story about the worth of compassion reaches its devastating, hard-earned conclusion.',
-    coverUrl: 'https://covers.openlibrary.org/b/isbn/9780765316592-L.jpg',
+    coverUrl: 'https://covers.openlibrary.org/b/id/9720396-L.jpg',
     genre: 'Fantasy',
     audibleUrl: 'https://www.audible.com/search?keywords=The+Crippled+God+Steven+Erikson',
   },
