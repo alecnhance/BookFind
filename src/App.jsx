@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import Start from './pages/Start'
@@ -21,6 +21,7 @@ export default function App() {
           <Route path="/picks" element={<PersonalPicks />} />
           <Route path="/quiz" element={<Quiz />} />
           <Route path="/book/:id" element={<BookDetail />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
     </BrowserRouter>
