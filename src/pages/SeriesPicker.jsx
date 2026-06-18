@@ -13,12 +13,45 @@ const fadeUp = {
   visible: { opacity: 1, y: 0, scale: 1, transition: { type: 'spring', stiffness: 240, damping: 24 } },
 }
 
+const ambientSparkles = [
+  { top: '8%', left: '4%', delay: 0, color: '#f59e0b' },
+  { top: '60%', left: '3%', delay: 1.8, color: '#a78bfa' },
+  { top: '20%', left: '94%', delay: 0.9, color: '#f59e0b' },
+  { top: '75%', left: '90%', delay: 2.4, color: '#a78bfa' },
+  { top: '45%', left: '50%', delay: 3.1, color: '#f59e0b' },
+]
+
 export default function SeriesPicker() {
   const navigate = useNavigate()
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-16">
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+    <div className="relative max-w-6xl mx-auto px-4 py-16">
+      {/* Ambient orbs */}
+      <div className="pointer-events-none fixed inset-0 overflow-hidden -z-10">
+        <motion.div
+          className="absolute -top-20 -left-20 w-[420px] h-[420px] rounded-full"
+          style={{ background: 'radial-gradient(circle, rgba(245,158,11,0.08) 0%, transparent 70%)' }}
+          animate={{ x: [0, 25, -12, 0], y: [0, -20, 14, 0] }}
+          transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut' }}
+        />
+        <motion.div
+          className="absolute -bottom-28 -right-28 w-[500px] h-[500px] rounded-full"
+          style={{ background: 'radial-gradient(circle, rgba(124,58,237,0.08) 0%, transparent 70%)' }}
+          animate={{ x: [0, -30, 16, 0], y: [0, 28, -14, 0] }}
+          transition={{ duration: 28, repeat: Infinity, ease: 'easeInOut', delay: 5 }}
+        />
+        {ambientSparkles.map((s, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1.5 h-1.5 rounded-full"
+            style={{ top: s.top, left: s.left, background: s.color }}
+            animate={{ opacity: [0, 1, 0], scale: [0.5, 2, 0.5], y: [0, -18, 0] }}
+            transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: s.delay }}
+          />
+        ))}
+      </div>
+
+      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ type: 'spring', stiffness: 260, damping: 24 }}>
         <button
           onClick={() => navigate('/start')}
           className="text-gray-400 hover:text-white text-sm mb-8 flex items-center gap-1 transition-colors"
@@ -28,7 +61,17 @@ export default function SeriesPicker() {
         <p className="text-amber-400 text-sm font-semibold uppercase tracking-[0.2em] mb-3">
           Alec's series picks
         </p>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">Choose a series</h1>
+        <h1
+          className="text-4xl md:text-5xl font-bold mb-2"
+          style={{
+            background: 'linear-gradient(135deg, #ffffff 0%, #f9fafb 50%, #f59e0b 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+          }}
+        >
+          Choose a series
+        </h1>
         <p className="text-gray-400 mb-12 text-lg">
           Each one is a commitment — here's what you're signing up for.
         </p>
@@ -46,9 +89,9 @@ export default function SeriesPicker() {
             <motion.div
               key={series.slug}
               variants={fadeUp}
-              whileHover={{ y: -8, scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ type: 'spring', stiffness: 360, damping: 26 }}
+              whileHover={{ y: -12, scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              transition={{ type: 'spring', stiffness: 360, damping: 22 }}
             >
               <Link
                 to={`/series/${series.slug}`}
