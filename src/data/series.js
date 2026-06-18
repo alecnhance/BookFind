@@ -1,0 +1,32 @@
+export const seriesList = [
+  {
+    slug: 'stormlight',
+    name: 'The Stormlight Archive',
+    author: 'Brandon Sanderson',
+    bookCount: 5,
+    completed: false,
+    hook: 'An enslaved soldier. A young scholar. A world torn apart by eternal storms.',
+    coverBookId: 'sa-1',
+    bookIds: ['sa-1', 'sa-2', 'sa-3', 'sa-4', 'sa-5'],
+  },
+  {
+    slug: 'mistborn',
+    name: 'Mistborn',
+    author: 'Brandon Sanderson',
+    bookCount: 3,
+    completed: true,
+    hook: 'What if the Dark Lord already won? A crew of rebels dares to overthrow a god.',
+    coverBookId: 'mb-1',
+    bookIds: ['mb-1', 'mb-2', 'mb-3'],
+  },
+  {
+    slug: 'malazan',
+    name: 'Malazan Book of the Fallen',
+    author: 'Steven Erikson',
+    bookCount: 10,
+    completed: true,
+    hook: 'The most ambitious fantasy series ever written. Gods bleed. Armies shatter. Nothing is sacred.',
+    coverBookId: 'mz-1',
+    bookIds: ['mz-1', 'mz-2', 'mz-3', 'mz-4', 'mz-5', 'mz-6', 'mz-7', 'mz-8', 'mz-9', 'mz-10'],
+  },
+]
