@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { seriesList } from '../data/series'
 import { personalPicks } from '../data/personalPicks'
@@ -14,9 +14,17 @@ const fadeUp = {
 }
 
 export default function SeriesPicker() {
+  const navigate = useNavigate()
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-16">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+        <button
+          onClick={() => navigate('/start')}
+          className="text-gray-400 hover:text-white text-sm mb-8 flex items-center gap-1 transition-colors"
+        >
+          ← Back
+        </button>
         <p className="text-amber-400 text-sm font-semibold uppercase tracking-[0.2em] mb-3">
           Alec's series picks
         </p>
