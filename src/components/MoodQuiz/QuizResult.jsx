@@ -105,7 +105,19 @@ export default function QuizResult({ query, onReset, onBack }) {
           </div>
         )}
 
-        {!loading && !error && (
+        {!loading && !error && results.length === 0 && (
+          <div className="text-center py-16">
+            <p className="text-gray-400 mb-6">No matches found — try different answers.</p>
+            <button
+              onClick={onReset}
+              className="bg-amber-500 hover:bg-amber-400 text-gray-900 font-bold px-6 py-3 rounded-xl transition-colors"
+            >
+              Retake quiz
+            </button>
+          </div>
+        )}
+
+        {!loading && !error && results.length > 0 && (
           <motion.div
             className="flex flex-col gap-6"
             initial="hidden"

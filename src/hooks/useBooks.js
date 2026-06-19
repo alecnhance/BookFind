@@ -25,7 +25,7 @@ export function useBooks(fetchFn, deps = []) {
 
     fetchFn()
       .then((data) => {
-        cache.set(cacheKey, data)
+        if (data.length > 0) cache.set(cacheKey, data)
         setBooks(data)
       })
       .catch((err) => {

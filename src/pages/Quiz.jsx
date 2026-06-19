@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
-import { getQuestions, buildQuery } from '../data/quizData'
+import { getQuestions, buildOpenLibraryQuery } from '../data/quizData'
 import QuizResult from '../components/MoodQuiz/QuizResult'
 import AlecSprite from '../components/AlecSprite'
 
@@ -73,7 +73,7 @@ export default function Quiz() {
     setDirection(1)
   }
 
-  const query = done ? buildQuery(answers) : null
+  const query = done ? buildOpenLibraryQuery(answers) : null
 
   return (
     <div className="relative min-h-screen">

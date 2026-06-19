@@ -1131,3 +1131,68 @@ export function buildQuery(answers) {
     LENGTH_TERM[answers.length],
   ].filter(Boolean).join(' ')
 }
+
+// Open Library subject terms — keyed by quiz answer values
+const OL_SUBJECT = {
+  // Fiction subgenres
+  epic:              'epic fantasy',
+  grimdark:          'dark fantasy',
+  cozy:              'cozy fantasy',
+  portal:            'portal fantasy',
+  magicalrealism:    'magical realism',
+  spaceopera:        'space opera',
+  hardscifi:         'science fiction',
+  cyberpunk:         'cyberpunk',
+  dystopian:         'dystopian',
+  firstcontact:      'science fiction',
+  psychological:     'psychological thriller',
+  spy:               'espionage',
+  legal:             'legal thriller',
+  domestic:          'thriller',
+  crime:             'crime fiction',
+  cozymystery:       'cozy mystery',
+  hardboiled:        'detective fiction',
+  procedural:        'detective fiction',
+  historicalmystery: 'historical mystery',
+  lockedroom:        'mystery fiction',
+  ancient:           'historical fiction',
+  medieval:          'historical fiction',
+  victorian:         'historical fiction',
+  wwii:              'historical fiction',
+  american:          'historical fiction',
+  asian:             'historical fiction',
+  familysaga:        'family fiction',
+  immigration:       'literary fiction',
+  southerngothic:    'southern gothic',
+  contemporary:      'literary fiction',
+  experimental:      'literary fiction',
+  // Non-fiction subtopics
+  military:              'military history',
+  biography:             'biography',
+  worldhistory:          'world history',
+  cosmology:             'cosmology',
+  biology:               'biology',
+  neuroscience:          'psychology',
+  environment:           'ecology',
+  technology:            'technology',
+  startup:               'entrepreneurship',
+  leadership:            'leadership',
+  economics:             'economics',
+  productivity:          'self-help',
+  psychologyofpersuasion:'psychology',
+  serialkiller:          'true crime',
+  investigative:         'journalism',
+  coldcase:              'true crime',
+  corporatefraud:        'true crime',
+}
+
+// Returns an Open Library `subject:` query — more reliable than keyword search
+export function buildOpenLibraryQuery(answers) {
+  const subgenreKey = answers.format === 'nonfiction' ? answers.subtopic : answers.subgenre
+  const subject = OL_SUBJECT[subgenreKey]
+  if (subject) return `subject:"${subject}"`
+
+  // Fallback: use genre name
+  const fallback = answers.format === 'nonfiction' ? 'nonfiction' : (answers.genre ?? 'fiction')
+  return `subject:"${fallback}"`
+}
