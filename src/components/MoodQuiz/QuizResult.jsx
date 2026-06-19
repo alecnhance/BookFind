@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { useBooks } from '../../hooks/useBooks'
-import { googleBooks } from '../../services/googleBooks'
+import { openLibrary } from '../../services/openLibrary'
 
 function audibleUrl(title, authors) {
   const author = Array.isArray(authors) ? authors[0] ?? '' : authors
@@ -33,7 +33,7 @@ const celebrationSparkles = [
 ]
 
 export default function QuizResult({ query, onReset, onBack }) {
-  const { books, loading, error } = useBooks(() => googleBooks.search(query), [query])
+  const { books, loading, error } = useBooks(() => openLibrary.search(query), [query])
   const results = books.slice(0, 3)
 
   return (
