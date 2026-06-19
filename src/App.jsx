@@ -1,5 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import Navbar from './components/Navbar'
+import { BrowserRouter, Routes, Route, Navigate, Link, useLocation } from 'react-router-dom'
 import Home from './pages/Home'
 import Start from './pages/Start'
 import SeriesPicker from './pages/SeriesPicker'
@@ -8,11 +7,24 @@ import PersonalPicks from './pages/PersonalPicks'
 import Quiz from './pages/Quiz'
 import BookDetail from './pages/BookDetail'
 
+function HomeLink() {
+  const { pathname } = useLocation()
+  if (pathname === '/') return null
+  return (
+    <Link
+      to="/"
+      className="fixed top-3 left-3 z-50 text-amber-500/40 hover:text-amber-400 text-sm font-semibold tracking-tight transition-colors duration-300"
+    >
+      ✦ BookFind
+    </Link>
+  )
+}
+
 export default function App() {
   return (
     <BrowserRouter>
-      <Navbar />
-      <main className="pt-16">
+      <HomeLink />
+      <main>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/start" element={<Start />} />

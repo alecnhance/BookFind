@@ -47,7 +47,7 @@ const sparkles = [
 
 export default function Start() {
   return (
-    <div className="relative min-h-[calc(100vh-4rem)] overflow-hidden flex flex-col items-center justify-center px-4 py-16">
+    <div className="relative min-h-screen overflow-hidden flex flex-col items-center justify-center px-4 py-16">
 
       {/* Animated background orbs */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">

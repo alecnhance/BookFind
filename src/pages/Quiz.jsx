@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import { getQuestions, buildQuery } from '../data/quizData'
 import QuizResult from '../components/MoodQuiz/QuizResult'
+import AlecSprite from '../components/AlecSprite'
 
 const quizSparkles = [
   { top: '10%', left: '5%',  delay: 0,   color: '#f59e0b', size: 5 },
@@ -20,6 +21,7 @@ export default function Quiz() {
   const [answers, setAnswers] = useState({})
   const [currentIndex, setCurrentIndex] = useState(0)
   const [direction, setDirection] = useState(1)
+  const [flipCount, setFlipCount] = useState(0)
 
   const questions = getQuestions(answers)
   const done = currentIndex >= questions.length
@@ -36,6 +38,7 @@ export default function Quiz() {
     setAnswers((prev) => ({ ...prev, [q.id]: value }))
     setDirection(1)
     setCurrentIndex((i) => i + 1)
+    setFlipCount((n) => n + 1)
   }
 
   const handleBack = () => {
@@ -73,7 +76,7 @@ export default function Quiz() {
   const query = done ? buildQuery(answers) : null
 
   return (
-    <div className="relative min-h-[calc(100vh-4rem)]">
+    <div className="relative min-h-screen">
 
       {/* Fixed background — dot grid + ambient orbs */}
       <div className="pointer-events-none fixed inset-0 -z-10">
@@ -116,6 +119,7 @@ export default function Quiz() {
         ))}
       </div>
 
+    <AlecSprite flipKey={flipCount} />
     <div className="max-w-2xl mx-auto px-4 py-16">
       {!done && (
         <>

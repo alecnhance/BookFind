@@ -48,7 +48,7 @@ export default function Home() {
   const navigate = useNavigate()
 
   return (
-    <div className="relative min-h-[calc(100vh-4rem)] overflow-hidden flex flex-col items-center justify-center">
+    <div className="relative min-h-screen overflow-hidden flex flex-col items-center justify-center">
 
       {/* Dot grid texture */}
       <div
@@ -144,12 +144,16 @@ export default function Home() {
         </motion.p>
 
         <motion.div variants={fadeUp} className="relative inline-block">
-          <motion.div
-            className="absolute inset-0 rounded-2xl"
-            style={{ background: 'rgba(245,158,11,0.3)' }}
-            animate={{ scale: [1, 1.22, 1], opacity: [0.6, 0, 0.6] }}
-            transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
-          />
+          {/* Two staggered ripple rings — expand outward only, never shrink back */}
+          {[0, 0.9].map((delay) => (
+            <motion.div
+              key={delay}
+              className="absolute inset-0 rounded-2xl pointer-events-none"
+              style={{ background: 'rgba(245,158,11,0.28)' }}
+              animate={{ scale: [1, 1.55], opacity: [0.5, 0] }}
+              transition={{ duration: 1.8, repeat: Infinity, ease: 'easeOut', delay }}
+            />
+          ))}
           <motion.button
             onClick={() => navigate('/start')}
             whileHover={{ scale: 1.07 }}
