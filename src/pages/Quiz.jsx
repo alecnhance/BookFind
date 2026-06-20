@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import { getQuestions, buildOpenLibraryQuery } from '../data/quizData'
@@ -26,9 +26,6 @@ export default function Quiz() {
 
   const questions = getQuestions(answers)
   const done = currentIndex >= questions.length
-
-  // Unlock once the index has committed — prevents spam-click from skipping questions
-  useEffect(() => { selectLock.current = false }, [currentIndex])
 
   // Stable total based on known path — avoids "2 of 2, 3 of 3" as questions drip in
   const totalQuestions =
@@ -157,7 +154,7 @@ export default function Quiz() {
             </div>
           </div>
 
-          <AnimatePresence mode="wait" custom={direction}>
+          <AnimatePresence mode="wait" custom={direction} onExitComplete={() => { selectLock.current = false }}>
             <motion.div
               key={currentIndex}
               custom={direction}
