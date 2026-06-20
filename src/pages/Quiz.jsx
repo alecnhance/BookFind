@@ -71,6 +71,7 @@ export default function Quiz() {
   }
 
   const handleReset = () => {
+    selectLock.current = false
     setAnswers({})
     setCurrentIndex(0)
     setDirection(1)
