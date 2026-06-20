@@ -60,6 +60,7 @@ export default function Quiz() {
   }
 
   const handleBackFromResults = () => {
+    selectLock.current = false
     const lastQuestion = questions[questions.length - 1]
     setAnswers((prev) => {
       const next = { ...prev }
