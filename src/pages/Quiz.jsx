@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import { getQuestions, buildOpenLibraryQuery } from '../data/quizData'
@@ -22,9 +22,13 @@ export default function Quiz() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [direction, setDirection] = useState(1)
   const [flipCount, setFlipCount] = useState(0)
+  const selectLock = useRef(false)
 
   const questions = getQuestions(answers)
   const done = currentIndex >= questions.length
+
+  // Unlock once the index has committed — prevents spam-click from skipping questions
+  useEffect(() => { selectLock.current = false }, [currentIndex])
 
   // Stable total based on known path — avoids "2 of 2, 3 of 3" as questions drip in
   const totalQuestions =
@@ -34,6 +38,8 @@ export default function Quiz() {
     : 14
 
   const handleSelect = (value) => {
+    if (selectLock.current) return
+    selectLock.current = true
     const q = questions[currentIndex]
     setAnswers((prev) => ({ ...prev, [q.id]: value }))
     setDirection(1)
