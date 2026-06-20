@@ -23,82 +23,98 @@ const ambientSparkles = [
   { top: '45%', left: '50%', delay: 3.1, color: '#f59e0b' },
 ]
 
-function AlecDancer({ hoveredSeries }) {
+function AlecDancer({ hoveredSeries, side }) {
   const [frame, setFrame] = useState(0)
   useEffect(() => {
     const t = setInterval(() => setFrame(f => (f + 1) % 2), 200)
     return () => clearInterval(t)
   }, [])
 
+  const isRight = side === 'right'
   const noteKey = hoveredSeries?.slug ?? 'default'
   const note    = hoveredSeries?.alecNote ?? ''
 
+  const sprite = (
+    <motion.div
+      animate={{ rotate: [-10, 0, 10, 0, -10], y: [0, -14, 0, -14, 0] }}
+      transition={{ duration: 1.1, repeat: Infinity, ease: 'easeInOut' }}
+      style={{ transformOrigin: 'bottom center', flexShrink: 0 }}
+    >
+      <div style={{ transform: isRight ? 'scaleX(-1)' : undefined }}>
+        <SpriteBody frame={frame} />
+      </div>
+    </motion.div>
+  )
+
+  const arrow = (
+    <div style={{
+      width: 0, height: 0, flexShrink: 0,
+      borderTop:    '9px solid transparent',
+      borderBottom: '9px solid transparent',
+      ...(isRight
+        ? { borderLeft:  '9px solid rgba(245,158,11,0.4)' }
+        : { borderRight: '9px solid rgba(245,158,11,0.4)' }),
+    }} />
+  )
+
+  const bubble = (
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={noteKey}
+        initial={{ opacity: 0, x: isRight ? 8 : -8 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{    opacity: 0, x: isRight ? 8 : -8 }}
+        transition={{ duration: 0.18 }}
+        style={{
+          background:   'rgba(17,24,39,0.96)',
+          border:       '1px solid rgba(245,158,11,0.35)',
+          borderRadius:  14,
+          padding:      '10px 13px',
+          width:         210,
+          boxShadow:    '0 4px 20px rgba(0,0,0,0.45)',
+        }}
+      >
+        <div style={{
+          color: '#f59e0b', fontSize: 10, fontWeight: 700,
+          textTransform: 'uppercase', letterSpacing: '0.12em',
+          marginBottom: 5,
+        }}>
+          Alec says
+        </div>
+        <div style={{ color: '#d1d5db', fontSize: 12.5, lineHeight: 1.55 }}>
+          "{note}"
+        </div>
+      </motion.div>
+    </AnimatePresence>
+  )
+
   return (
-    // Plain div handles fixed viewport centering — no transform conflict with motion
     <div style={{
       position:  'fixed',
-      left:       12,
+      ...(isRight ? { right: 12 } : { left: 12 }),
       top:       '50%',
       transform: 'translateY(-50%)',
       zIndex:     50,
       pointerEvents: 'none',
     }}>
-      {/* motion.div carries the enter/exit animation */}
       <motion.div
-        initial={{ opacity: 0, x: -24 }}
+        initial={{ opacity: 0, x: isRight ? 24 : -24 }}
         animate={{ opacity: 1, x: 0 }}
-        exit={{    opacity: 0, x: -24 }}
+        exit={{    opacity: 0, x: isRight ? 24 : -24 }}
         transition={{ type: 'spring', stiffness: 320, damping: 28 }}
         style={{ display: 'flex', alignItems: 'center', gap: 6 }}
       >
-        {/* Dancing sprite — rotates around its feet */}
-        <motion.div
-          animate={{ rotate: [-10, 0, 10, 0, -10], y: [0, -14, 0, -14, 0] }}
-          transition={{ duration: 1.1, repeat: Infinity, ease: 'easeInOut' }}
-          style={{ transformOrigin: 'bottom center', flexShrink: 0 }}
-        >
-          <SpriteBody frame={frame} />
-        </motion.div>
-
-        {/* Caret + speech bubble — alignItems:'center' keeps arrow at sprite mid-height */}
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          {/* Arrow pointing left toward the sprite */}
-          <div style={{
-            width: 0, height: 0, flexShrink: 0,
-            borderTop:    '9px solid transparent',
-            borderBottom: '9px solid transparent',
-            borderRight:  '9px solid rgba(245,158,11,0.4)',
-          }} />
-
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={noteKey}
-              initial={{ opacity: 0, x: -8 }}
-              animate={{ opacity: 1, x: 0  }}
-              exit={{    opacity: 0, x: -8 }}
-              transition={{ duration: 0.18 }}
-              style={{
-                background:   'rgba(17,24,39,0.96)',
-                border:       '1px solid rgba(245,158,11,0.35)',
-                borderRadius:  14,
-                padding:      '10px 13px',
-                width:         210,
-                boxShadow:    '0 4px 20px rgba(0,0,0,0.45)',
-              }}
-            >
-              <div style={{
-                color: '#f59e0b', fontSize: 10, fontWeight: 700,
-                textTransform: 'uppercase', letterSpacing: '0.12em',
-                marginBottom: 5,
-              }}>
-                Alec says
-              </div>
-              <div style={{ color: '#d1d5db', fontSize: 12.5, lineHeight: 1.55 }}>
-                "{note}"
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
+        {isRight ? (
+          <>
+            <div style={{ display: 'flex', alignItems: 'center' }}>{bubble}{arrow}</div>
+            {sprite}
+          </>
+        ) : (
+          <>
+            {sprite}
+            <div style={{ display: 'flex', alignItems: 'center' }}>{arrow}{bubble}</div>
+          </>
+        )}
       </motion.div>
     </div>
   )
@@ -108,7 +124,9 @@ export default function SeriesPicker() {
   const navigate = useNavigate()
   const [hoveredSlug, setHoveredSlug] = useState(null)
 
-  const hoveredSeries = seriesList.find(s => s.slug === hoveredSlug) ?? null
+  const hoveredIndex  = seriesList.findIndex(s => s.slug === hoveredSlug)
+  const hoveredSeries = hoveredIndex >= 0 ? seriesList[hoveredIndex] : null
+  const side          = hoveredIndex === 1 ? 'right' : 'left'
 
   return (
     <div className="relative max-w-6xl mx-auto px-4 py-16">
@@ -140,7 +158,7 @@ export default function SeriesPicker() {
 
       {/* Dancing Alec — only visible while a series is hovered */}
       <AnimatePresence>
-        {hoveredSeries && <AlecDancer hoveredSeries={hoveredSeries} />}
+        {hoveredSeries && <AlecDancer key={side} hoveredSeries={hoveredSeries} side={side} />}
       </AnimatePresence>
 
       <motion.div
