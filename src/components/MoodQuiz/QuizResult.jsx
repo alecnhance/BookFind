@@ -154,9 +154,11 @@ export default function QuizResult({ query, onReset, onBack }) {
                 <div className="flex flex-col flex-1 min-w-0">
                   <h3 className="text-white font-bold text-lg leading-snug mb-0.5">{book.title}</h3>
                   <p className="text-gray-400 text-sm mb-3">{book.authors.join(', ')}</p>
-                  <p className="text-gray-300 text-sm leading-relaxed line-clamp-2 mb-4">
-                    {book.description}
-                  </p>
+                  {book.description && (
+                    <p className="text-gray-300 text-sm leading-relaxed line-clamp-2 mb-4">
+                      {book.description}
+                    </p>
+                  )}
                   <motion.a
                     href={audibleUrl(book.title, book.authors)}
                     target="_blank"
